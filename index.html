@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Crypto Security Dashboard</title>
+
+<style>
+
+body{
+background:#0b0f19;
+color:white;
+font-family:Arial;
+text-align:center;
+padding-top:80px;
+}
+
+.card{
+background:#121826;
+padding:20px;
+margin:20px;
+border-radius:10px;
+display:inline-block;
+width:200px;
+}
+
+button{
+padding:10px 20px;
+background:#f0b90b;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Crypto Exchange Security Simulation</h1>
+
+<div class="card">
+<h3>BTC Balance</h3>
+<p>0.542 BTC</p>
+</div>
+
+<div class="card">
+<h3>USDT Balance</h3>
+<p>12,540 USDT</p>
+</div>
+
+<div class="card">
+<h3>BTC Price</h3>
+<p id="price">Loading...</p>
+</div>
+
+<button onclick="alert('Security simulation page coming next')">
+Withdraw BTC
+</button>
+
+<script>
+
+fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd")
+.then(res => res.json())
+.then(data => {
+document.getElementById("price").innerHTML =
+"$" + data.bitcoin.usd;
+})
+
+</script>
+
+</body>
+</html>
