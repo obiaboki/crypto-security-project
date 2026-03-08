@@ -1,72 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Crypto Security Dashboard</title>
-
-<style>
-
-body{
-background:#0b0f19;
-color:white;
-font-family:Arial;
-text-align:center;
-padding-top:80px;
-}
-
-.card{
-background:#121826;
-padding:20px;
-margin:20px;
-border-radius:10px;
-display:inline-block;
-width:200px;
-}
-
-button{
-padding:10px 20px;
-background:#f0b90b;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Crypto Security Simulation Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
+  <div class="container">
+    <nav class="sidebar">
+      <h1 class="logo">SimEx</h1>
+      <ul>
+        <li class="active"><span>🏠</span> Dashboard</li>
+        <li><span>💹</span> Trade</li>
+        <li><span>👛</span> Wallet</li>
+        <li><span>🔒</span> Security</li>
+      </ul>
+    </nav>
 
-<h1>Crypto Exchange Security Simulation</h1>
+    <main class="main-content">
+      <header>
+        <h2>Dashboard</h2>
+        <div id="live-btc-price">BTC: <span id="btc-price">$00,000</span></div>
+      </header>
 
-<div class="card">
-<h3>BTC Balance</h3>
-<p>0.542 BTC</p>
-</div>
+      <section class="cards">
+        <div class="card balance">
+          <div class="card-title">BTC Balance</div>
+          <div class="card-value">0.527818 <span class="compare">BTC</span></div>
+        </div>
+        <div class="card balance">
+          <div class="card-title">USDT Balance</div>
+          <div class="card-value">1205.17 <span class="compare">USDT</span></div>
+        </div>
+        <div class="card action-card">
+          <button id="withdraw-btn" onclick="location.href='withdraw.html'">Withdraw</button>
+        </div>
+      </section>
 
-<div class="card">
-<h3>USDT Balance</h3>
-<p>12,540 USDT</p>
-</div>
+      <section class="chart-section">
+        <h3>BTC/USDT Price Trend</h3>
+        <canvas id="btcChart"></canvas>
+      </section>
 
-<div class="card">
-<h3>BTC Price</h3>
-<p id="price">Loading...</p>
-</div>
+      <footer>
+        <small>
+          ⚠ This is a simulation dashboard for educational purposes. No real funds or private keys should be used.
+        </small>
+      </footer>
+    </main>
+  </div>
 
-<button onclick="alert('Security simulation page coming next')">
-Withdraw BTC
-</button>
-
-<script>
-
-fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd")
-.then(res => res.json())
-.then(data => {
-document.getElementById("price").innerHTML =
-"$" + data.bitcoin.usd;
-})
-
-</script>
-
+  <script src="price.js"></script>
+  <script src="chart.js"></script>
 </body>
 </html>

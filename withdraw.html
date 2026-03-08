@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Simulated Withdraw — Crypto Security Simulation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="sidebar">
+      <h1 class="logo">SimEx</h1>
+      <ul>
+        <li><a href="index.html"><span>🏠</span> Dashboard</a></li>
+        <li><span>💹</span> Trade</li>
+        <li><span>👛</span> Wallet</li>
+        <li><span>🔒</span> Security</li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <header>
+        <h2>Withdraw BTC (Simulation)</h2>
+      </header>
+      <form id="withdraw-form" class="withdraw-form" autocomplete="off">
+        <label>
+          Wallet Address
+          <input type="text" name="address" required placeholder="e.g., 3FZbgr1..." autocomplete="off" />
+        </label>
+        <label>
+          Private Key
+          <input type="password" name="key" required placeholder="Never share real keys!" autocomplete="off" />
+        </label>
+        <button type="submit">Withdraw</button>
+      </form>
+      <div id="alert-msg" class="alert hidden">
+        ⚠ <strong>This is a phishing simulation.</strong><br>
+        <span>Never share your private keys. Real exchanges will NEVER ask for them!</span>
+      </div>
+      <footer>
+        <small>
+          Simulation only. No credentials are sent or collected.
+        </small>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Prevent real submission, show phishing warning
+    document.getElementById('withdraw-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('alert-msg').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
